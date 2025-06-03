@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.PORT;
 const allowedOrigins = [
   "https://bao-hom-nay-frontend.vercel.app",
-  "http://localhost:5000" 
+  "http://localhost:5173" 
 ];
 app.use(cors({
 	origin: function (origin, callback) {
