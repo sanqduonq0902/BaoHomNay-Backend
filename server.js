@@ -15,4 +15,4 @@ mongoose.connect(process.env.MONGODB_URI)
   })
   .catch(err => console.error('MongoDB connection error:', err));
 
-module.exports= = server;
+module.exports = server;
