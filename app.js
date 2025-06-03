@@ -3,7 +3,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 const articleRoutes = require("./routes/articleRoutes");
@@ -28,12 +28,7 @@ app.get("/", (req, res) => {
 
 mongoose
 	.connect(process.env.MONGODB_URI)
-	.then(() => {
-		console.log("MongoDB connected");
-		app.listen(process.env.PORT || 5000, () => {
-			console.log(`Server running on port ${process.env.PORT}`);
-		});
-	})
+	.then(() => console.log("MongoDB connected"))
 	.catch((err) => console.error("MongoDB connection error:", err));
 
 module.exports = app;
