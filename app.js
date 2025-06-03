@@ -12,7 +12,10 @@ const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 const port = process.env.PORT;
-app.use(cors());
+app.use(cors({
+	origin: "https://bao-hom-nay-frontend.vercel.app",
+	credentials: true
+}));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
