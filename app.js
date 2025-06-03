@@ -11,6 +11,7 @@ const commentRoutes = require("./routes/commentRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
+const port = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
@@ -30,5 +31,9 @@ mongoose
 	.connect(process.env.MONGODB_URI)
 	.then(() => console.log("MongoDB connected"))
 	.catch((err) => console.error("MongoDB connection error:", err));
+
+app.listen(port, () => {
+    console.log(`App started at http://localhost:${port}`)
+})
 
 module.exports = app;
