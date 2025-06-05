@@ -13,7 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 const port = process.env.PORT;
 const allowedOrigins = [
-  "https://bao-hom-nay-frontend.vercel.app/",
+  "https://bao-hom-nay-frontend.vercel.app",
   "http://localhost:5173" 
 ];
 app.use(cors({
