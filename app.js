@@ -13,7 +13,7 @@ const userRoutes = require("./routes/userRoutes");
 const app = express();
 const port = process.env.PORT;
 const allowedOrigins = [
-  "https://bao-hom-nay-frontend.vercel.app",
+  "https://bao-hom-nay-frontend.vercel.app/",
   "http://localhost:5173" 
 ];
 app.use(cors({
@@ -41,13 +41,20 @@ app.get("/", (req, res) => {
 	res.send("Backend is running");
 });
 
-mongoose
-	.connect(process.env.MONGODB_URI)
-	.then(() => console.log("MongoDB connected"))
-	.catch((err) => console.error("MongoDB connection error:", err));
+const startServer = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("MongoDB connected");
 
-app.listen(port, () => {
-    console.log(`App started at http://localhost:${port}`)
-})
+    app.listen(port, () => {
+      console.log(`App started at http://localhost:${port}`);
+    });
+  } catch (err) {
+    console.error("Error starting server:", err.message);
+    process.exit(1); 
+  }
+};
+
+startServer();
 
 module.exports = app;
